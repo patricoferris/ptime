@@ -3,20 +3,19 @@ name: "ptime"
 synopsis: """POSIX time for OCaml"""
 maintainer: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
 authors: ["The ptime programmers"]
-homepage: "https://erratique.ch/software/ptime"
-doc: "https://erratique.ch/software/ptime/doc/"
-dev-repo: "git+https://erratique.ch/repos/ptime.git"
+homepage: "http://erratique.ch/software/ptime"
+doc: "http://erratique.ch/software/ptime/doc"
+dev-repo: "git+https://github.com/dune-universe/ptime.git"
 bug-reports: "https://github.com/dbuenzli/ptime/issues"
-license: ["ISC"]
-tags: ["time" "posix" "system" "org:erratique"]
-depends: ["ocaml" {>= "4.03.0"}
-          "ocamlfind" {build}
-          "ocamlbuild" {build & != "0.9.0"}
-          "topkg" {build & >= "1.0.3"}]
-depopts: ["js_of_ocaml"]
-conflicts: ["js_of_ocaml" {<= "3.3.0"}]
-build: [["ocaml" "pkg/pkg.ml" "build" "--dev-pkg" "%{dev}%"
-          "--with-js_of_ocaml" "%{js_of_ocaml:installed}%"]]
+tags: [ "time" "posix" "system" "org:erratique" ]
+license: "ISC"
+depends: [
+  "dune"
+  "ocaml" {>= "4.01.0"}
+  "result"
+]
+depopts: [ "js_of_ocaml" ]
+synopsis: "POSIX time for OCaml"
 description: """
 Ptime has platform independent POSIX time support in pure OCaml. It
 provides a type to represent a well-defined range of POSIX timestamps
@@ -38,3 +37,7 @@ ISC license.
 [jsoo]: http://ocsigen.org/js_of_ocaml/
 
 Home page: http://erratique.ch/software/ptime"""
+build: [[ "dune" "build" "-p" name ]]
+url {
+  src: "git://github.com/dune-universe/ptime.git#duniverse-v0.8.5"
+}
